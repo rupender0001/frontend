@@ -9,13 +9,13 @@ function PaymentScreen() {
     // Logic to handle payment based on the selected method
     switch(method) {
       case 'phonepe':
-        window.open('upi://pay?pa=9694668873@paytm&pn=Ashu&cu=INR');
+        window.open('upi://pay?pa=9166033002@paytm&pn=Ashu&cu=INR');
         break;
       case 'paytm':
-        window.open('upi://pay?pa=9694668873@paytm&pn=Ashu&cu=INR');
+        window.open('upi://pay?pa=9166033002@paytm&pn=Ashu&cu=INR');
         break;
       case 'googlepay':
-        window.open('upi://pay?pa=9694668873@paytm&pn=Ashu&cu=INR');
+        window.open('upi://pay?pa=9166033002@paytm&pn=Ashu&cu=INR');
         break;
       default:
         console.error('Invalid payment method');
