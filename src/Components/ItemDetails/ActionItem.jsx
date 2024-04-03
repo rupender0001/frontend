@@ -50,7 +50,7 @@ const ActionItem = ({ product }) => {
                 setOpenLoginDialog(true);
                 return; // Don't proceed with the order
             }
-            const orderUrl = "http://13.201.126.56/orders";
+            const orderUrl = "http://13.201.126.56:8000/orders";
             const { data } = await axios.post(orderUrl, { amount: cost,accounts:account });
             // Redirect user to the payment page with the order ID or any necessary data
             window.location.href = `/payment?amount=${cost}`;
@@ -75,7 +75,7 @@ const ActionItem = ({ product }) => {
 			handler: async (response) => {
 				try {
                     console.log(`>>>>>ress>>>`,response)
-					const verifyUrl = "http://13.201.126.56/verify";
+					const verifyUrl = "http://13.201.126.56:8000/verify";
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 				} catch (error) {

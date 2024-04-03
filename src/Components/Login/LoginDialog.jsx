@@ -135,6 +135,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
 
     const signupUser = async() => {
         let response = await authenticateSignup(signup);
+        console.log(response)
         if(!response) return;
         handleClose();
         setAccount(signup.phone);

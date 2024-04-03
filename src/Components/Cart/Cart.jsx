@@ -80,7 +80,7 @@ const Cart = () => {
                 setOpenLoginDialog(true);
                 return; // Don't proceed with the order
             }
-			const orderUrl = "http://13.201.126.56/orders";
+			const orderUrl = "http://13.201.126.56:8000/orders";
 			const { data } = await axios.post(orderUrl, { amount: totalPrice*100});
 			initPayment(data.data);
 		} catch (error) {
@@ -102,7 +102,7 @@ const Cart = () => {
 			order_id: data.id,
 			handler: async (response) => {
 				try {
-					const verifyUrl = "http://13.201.126.56/verify";
+					const verifyUrl = "http://13.201.126.56:8000/verify";
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 				} catch (error) {
