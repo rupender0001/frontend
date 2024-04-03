@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const getProducts = () => async (dispatch) => {
     try {
-        const { data } = await axios.get(`http://localhost:8000/products`);
+        const { data } = await axios.get(`http://13.201.126.56/products`);
         dispatch({ type: actionTypes.GET_PRODUCTS_SUCCESS, payload: data });
 
     } catch (error) {
@@ -16,7 +16,7 @@ export const getProductDetails = (id) => async (dispatch) => {
       console.log(id)
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
         console.log(`>>>>>`,id)
-        const { data } = await axios.get(`http://localhost:8000/product/${id}`);
+        const { data } = await axios.get(`http://13.201.126.56/product/${id}`);
         
         
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS, payload: data });
