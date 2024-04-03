@@ -184,8 +184,6 @@ const Home = () => {
         <>
             <NavBar />
             <Component>
-                <Banner />
-                <MidSlide products={products} />
                 <MidSection />
                 {/* <Slide
                     data={products} 
