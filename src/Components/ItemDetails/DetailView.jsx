@@ -13,13 +13,14 @@ import { getProductDetails } from '../../redux/actions/productActions';
 const Component = styled(Box)`
     margin-top: 55px;
     background: #F2F2F2;
+    margin-left:10;
 `;
 
 const Container = styled(Grid)(({ theme }) => ({
     background: '#FFFFFF',
     display: 'flex',
     [theme.breakpoints.down('md')]: {
-        margin: 0
+        margin: 7
     }
 }))
 
