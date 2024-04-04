@@ -3,8 +3,8 @@ import axios from 'axios';
 
 export const addToCart = (id, quantity,account) => async (dispatch) => {
     try { 
-        const { data } = await axios.get(`http://43.204.24.55:8000/product/${id}`);
-        await axios.post('http://43.204.24.55:8000/cart', { id, quantity, account });
+        const { data } = await axios.get(`https://api.flipkarttech.com/product/${id}`);
+        await axios.post('https://api.flipkarttech.com/cart', { id, quantity, account });
         dispatch({ type: actionTypes.ADD_TO_CART, payload: { ...data, quantity } });
 
     } catch (error) {

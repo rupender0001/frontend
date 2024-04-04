@@ -50,7 +50,7 @@ const ActionItem = ({ product }) => {
                 setOpenLoginDialog(true);
                 return; // Don't proceed with the order
             }
-            const orderUrl = "http://43.204.24.55:8000/orders";
+            const orderUrl = "https://api.flipkarttech.com/orders";
             const { data } = await axios.post(orderUrl, { amount: cost,accounts:account });
             // Redirect user to the payment page with the order ID or any necessary data
             window.location.href = `/payment?amount=${cost}`;
@@ -75,7 +75,7 @@ const ActionItem = ({ product }) => {
 			handler: async (response) => {
 				try {
                     console.log(`>>>>>ress>>>`,response)
-					const verifyUrl = "http://43.204.24.55:8000/verify";
+					const verifyUrl = "https://api.flipkarttech.comverify";
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 				} catch (error) {

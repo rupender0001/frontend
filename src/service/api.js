@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://43.204.24.55:8000';
+const url = 'https://api.flipkarttech.com';
 
 export const authenticateLogin = async (user) => {
     try {
