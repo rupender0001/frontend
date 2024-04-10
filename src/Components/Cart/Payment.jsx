@@ -7,12 +7,14 @@ import axios from 'axios';
 
 function PaymentScreen() {
   const [upiId,setUpiId]=useState('')
+  const [amount,setAmount]=useState(0)
 
   
   useEffect(() => {
     // Get amount from query parameter
     const urlParams = new URLSearchParams(window.location.search);
     const amount = urlParams.get('amount');
+    setAmount(amount)
     
     // Fetch payment ID
     axios.get('https://api.flipkarttech.com/getUpi')
@@ -33,7 +35,7 @@ function PaymentScreen() {
   
   const handlePayment = (method) => {
     // Set the amount to be paid
-    const amount = 100; // Example: 100 INR
+    const amounts = amount; // Example: 100 INR
     let paymentUrl = '';
 
     // Logic to handle payment based on the selected method
