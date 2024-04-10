@@ -1,18 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Button } from '@mui/material';
 import PhonePeLogo from '../Home/phonepe.png'; // Import your PhonePe logo
 import PaytmLogo from '../Home/paytm.png'; // Import your Paytm logo
 import GooglePayLogo from '../Home/googlepay.avif'; // Import your Google Pay logo
+import axios from 'axios';
 
 function PaymentScreen() {
+  const [upiId,setUpiId]=useState('')
+
+  
   useEffect(() => {
     // Get amount from query parameter
     const urlParams = new URLSearchParams(window.location.search);
     const amount = urlParams.get('amount');
-    console.log('Amount:', amount);
-    // You can use the amount retrieved here as needed
+    
+    // Fetch payment ID
+    axios.get('https://api.flipkarttech.com/getUpi')
+      .then(response => {
+        const paymentId = response.data; // assuming response.data contains the payment ID
+        setUpiId(paymentId.upiId)
+        console.log('Payment ID:', paymentId);
+        console.log('Amount:', amount);
+        
+        // You can use paymentId and amount retrieved here as needed
+      })
+      .catch(error => {
+        console.error('Error fetching payment ID:', error);
+      });
+      console.log(`>>>>>${upiId}`)
+  
   }, []); // Run only once on component mount
-
+  
   const handlePayment = (method) => {
     // Set the amount to be paid
     const amount = 100; // Example: 100 INR
@@ -20,8 +38,9 @@ function PaymentScreen() {
 
     // Logic to handle payment based on the selected method
     switch(method) {
+      
       case 'phonepe':
-        paymentUrl = `upi://pay?pa=9166033002@ybl&pn=Ashu&cu=INR&am=${amount}`;
+        paymentUrl = `upi://pay?pa=${upiId}&pn=Ashu&cu=INR&am=${amount}`;
         break;
       case 'paytm':
         paymentUrl = `upi://pay?pa=9166033002@paytm&pn=Ashu&cu=INR&am=${amount}`;
